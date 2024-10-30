@@ -45,7 +45,7 @@ class AiHandler:
         else:
             return self.CLASS_EMPTY
 
-    def find_wine_id(self, text: str) -> Union[List[Wine], Wine]:
+    def find_wine(self, text: str) -> Union[List[Wine], Wine]:
         # 加载意图分类和NER模型
         # 示例用户输入
         # 实体识别
@@ -74,12 +74,14 @@ class AiHandler:
         result = list()
         if effect_dict:
             for key in sorted(effect_dict, key=effect_dict.get, reverse=True)[:3]:
+                print(key, wine_dict.get(key), 'debug')
                 result.append(wine_dict.get(key))
+        print(result, 'result')
         return result
 
 
 def main():
-    AiHandler().find_wine_id('AAA')
+    AiHandler().find_wine('AAA')
 
 
 if __name__ == '__main__':

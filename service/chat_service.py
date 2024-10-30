@@ -25,6 +25,7 @@ def handler_chat(token: str, request_dict: Dict[str, str]):
             if last_chat.stage == StageMap.ByeBye.value:
                 last_chat = None  # 如果 bye bye 就重新开启一段信息
         intent, wine = find_wine_name_and_intent(text)
+        print(intent, wine, 'intent_and_wine')
         if last_chat is not None and intent < 0 < last_chat.intent:
             intent = last_chat.intent
         if isinstance(wine, list) and len(wine) == 0:
@@ -62,5 +63,5 @@ def find_wine_name_and_intent(text: str) -> Tuple[int, Union[Wine, List[Wine]]]:
     :return:
     """
     intent = AiHandler().classification_intent(text)
-    wine_id = AiHandler().find_wine_id(text)
-    return intent, wine_id
+    wine = AiHandler().find_wine(text)
+    return intent, wine
