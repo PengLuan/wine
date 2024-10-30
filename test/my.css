@@ -1,5 +1,5 @@
 .main{
-	width: 80%;height: 90%;background: #f0f0f0;margin-left: 10%;margin-top: 2%;
+	width: 80%;height: 90%;background: #f0f0f0;margin-left: 10%;margin-top: 2%;position:absolute;
 }
 .main .left{
 	width: 70%;
@@ -46,6 +46,47 @@
 	margin-top: 10px;
 	text-align: center;
 }
+.score .button {
+    margin-right: 30%;
+    width: 40%;
+}
+.score{
+    z-index:99;
+    display: none;
+    width:50%;
+    position: absolute;
+    height:50%;
+    top:25%;
+    left:25%;
+    background: #ffffff;
+    border-radius: 20px;
+    border:2px solid red;
+}
+.can_do_score{
+    display: none;
+    z-index:99;
+    width:50%;
+    position: absolute;
+    height:20%;
+    top:25%;
+    left:25%;
+    background: #ffffff;
+    border-radius: 20px;
+    border:2px solid red;
+}
+.score .label, .can_do_score .label{
+    font-size:20px;
+    color: blue;
+    margin-left:40px;
+    margin-top:10px;
+}
+.score .text-area{
+    background: #eeeeee;
+    width:70%;
+    height:30%;
+    margin-top:5%;
+    margin-left:15%;
+}
 .for-human{
 	width: 60%;
 	float: right;
@@ -57,4 +98,16 @@
 	border-radius: 10px;
 	margin-top: 10px;
 	text-align: center;
+}
+
+.score .score_select{
+	background: #eeeeee;
+	font-size: 20px;
+	line-height: 20px;
+	text-align: center;
+	border-radius: 20px;
+	width:60%;
+    height:10%;
+    margin-top:5%;
+    margin-left:15%;
 }

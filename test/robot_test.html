@@ -12,6 +12,24 @@
 			<textarea id="text" class="text-area"></textarea>
 			<div id="send" class="button">确认发送</div>
         </div>
+        <div class="score">
+            <div class="label">分数</div>
+			<select id="score_value" class="score_select">
+                <option label="特别好" value="5"></option>
+                <option label="很好" value="4"></option>
+                <option label="还可以" value="3"></option>
+                <option label="一般" value="2"></option>
+                <option label="很糟糕" value="1"></option>
+            </select>
+            <div class="label">描述</div>
+			<textarea id="desc" class="text-area"></textarea>
+			<div id="do_score" class="button">确认评分</div>
+        </div>
+        <div class="can_do_score">
+            <div class="label">是否对"<span id="wine_name">酒品名称</span>"打分？</div>
+            <div id="no_score" class="button" style="background: #666666;">否</div>
+            <div id="yes_score" class="button">是</div>
+        </div>
     </div>
 </body>
 </html>

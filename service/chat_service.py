@@ -33,7 +33,7 @@ def handler_chat(token: str, request_dict: Dict[str, str]):
             # 直接回答问题
             if isinstance(wine, Wine):
                 res_text = f"您所咨询的{wine.name}的{IntentMap.get(intent)}为{getattr(wine, IntentFiledMap.get(intent))}"
-                return save_chat(token, text, res_text, StageMap.AskingOther.value, wine_id=wine.id, intent=intent)
+                return save_chat(token, text, res_text, StageMap.AskingOther.value, wine=wine, intent=intent)
             elif isinstance(wine, list):
                 wine_text = ['、'.join([item.name for item in wine])]
                 res_text = f"请从{wine_text}中选择您所要咨询的酒品"
@@ -44,7 +44,7 @@ def handler_chat(token: str, request_dict: Dict[str, str]):
         else:
             if isinstance(wine, Wine):
                 res_text = ChatExample.HelloOnlyWine.value.replace("**", wine.name)
-                return save_chat(token, text, res_text, StageMap.ConfirmWine.value, wine_id=wine.id, intent=intent)
+                return save_chat(token, text, res_text, StageMap.ConfirmWine.value, wine=wine, intent=intent)
             elif isinstance(wine, list):
                 wine_text = ['、'.join([item.name for item in wine])]
                 res_text = f"请从{wine_text}中选择您所要咨询的酒品"

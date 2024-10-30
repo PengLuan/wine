@@ -1,3 +1,4 @@
+import pickle
 import torch
 import gensim
 from LAC import LAC
@@ -15,7 +16,7 @@ class AiHandler:
     SAME_LIMIT_BASE = 0.1
     effect_map = ['ORG', 'LOC', 'n']
     token = BertTokenizer.from_pretrained('bert-base-chinese')
-    model = torch.load("data/classification.model", map_location="cpu")
+    model = torch.load("./data/classification.model", map_location="cpu", pickle_module=pickle)
     fasttext_model = gensim.models.fasttext.load_facebook_vectors('data/cc.zh.300.bin')
     model.eval()
 
@@ -63,7 +64,7 @@ class AiHandler:
         wine_dict = dict()
         for item in Wine.select():
             item: Wine = item
-            wine_dict.update({item.id, item})
+            wine_dict.update({item.id: item})
             for word in one_word_list:
                 same_score = self.fasttext_model.similarity(word, item.name)
                 if same_score >= self.SAME_LIMIT:
@@ -75,3 +76,11 @@ class AiHandler:
             for key in sorted(effect_dict, key=effect_dict.get, reverse=True)[:3]:
                 result.append(wine_dict.get(key))
         return result
+
+
+def main():
+    AiHandler().find_wine_id('AAA')
+
+
+if __name__ == '__main__':
+    main()

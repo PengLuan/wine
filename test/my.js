@@ -5,7 +5,7 @@ $(function(){
 		let text = $("#text").val();
 		if(text){
 			$("#container").append("<div class='for-human'>" + text + "</div>")
-			$.get(BaseUrl, {"text": text, "session_id": UUID}, function(res){
+			$.post(BaseUrl, {"text": text, "session_id": UUID}, function(res){
 				if(res.code == 0){
 					$("#container").append("<div class='for-robot'>" + res.data.text + "</div>");
 				}
