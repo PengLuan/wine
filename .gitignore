@@ -1,2 +1,4 @@
 /data/cc.zh.300.bin
 .idea
+/data/classification.model
+/data/logs

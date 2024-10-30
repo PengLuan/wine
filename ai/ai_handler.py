@@ -15,7 +15,7 @@ class AiHandler:
     SAME_LIMIT_BASE = 0.1
     effect_map = ['ORG', 'LOC', 'n']
     token = BertTokenizer.from_pretrained('bert-base-chinese')
-    model = torch.load("classification.model", map_location="cpu")
+    model = torch.load("data/classification.model", map_location="cpu")
     fasttext_model = gensim.models.fasttext.load_facebook_vectors('data/cc.zh.300.bin')
     model.eval()
 
