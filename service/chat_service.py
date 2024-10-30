@@ -35,7 +35,7 @@ def handler_chat(token: str, request_dict: Dict[str, str]):
             if isinstance(wine, Wine):
                 res_text = f"您所咨询的{wine.name}的{IntentMap.get(intent)}为{getattr(wine, IntentFiledMap.get(intent))}"
                 return save_chat(token, text, res_text, StageMap.AskingOther.value, wine=wine, intent=intent)
-            elif isinstance(wine, list) and len(wine) > 0:
+            elif isinstance(wine, list) and len(wine) > 1:
                 wine_text = ['、'.join([item.name for item in wine])]
                 res_text = f"请从{wine_text}中选择您所要咨询的酒品"
                 return save_chat(token, text, res_text, StageMap.ConfirmWine.value, intent=intent)
@@ -46,7 +46,7 @@ def handler_chat(token: str, request_dict: Dict[str, str]):
             if isinstance(wine, Wine):
                 res_text = ChatExample.HelloOnlyWine.value.replace("**", wine.name)
                 return save_chat(token, text, res_text, StageMap.ConfirmWine.value, wine=wine, intent=intent)
-            elif isinstance(wine, list) and len(wine) > 0:
+            elif isinstance(wine, list) and len(wine) > 1:
                 wine_text = ['、'.join([item.name for item in wine])]
                 res_text = f"请从{wine_text}中选择您所要咨询的酒品"
                 return save_chat(token, text, res_text, StageMap.ConfirmWine.value, intent=intent)

@@ -8,8 +8,10 @@ def main():
         'kiwi': 12
     }
     # 获取值排名前三的键
-    top_keys = sorted(data, key=data.get, reverse=True)[:3]
-    print("排名前三的键:", top_keys)
+    # top_keys = sorted(data, key=data.get, reverse=True)[:3]
+    # print("排名前三的键:", top_keys)
+    for key in sorted(data, key=data.get, reverse=True)[:3]:
+        print(key)
 
 
 if __name__ == '__main__':

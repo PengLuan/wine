@@ -70,8 +70,9 @@ class AiHandler:
                 if same_score >= self.SAME_LIMIT:
                     return item
                 elif same_score > self.SAME_LIMIT_BASE:
-                    effect_dict.update({Wine.id: same_score})
+                    effect_dict.update({item.id: same_score})
         result = list()
+        print(effect_dict, 'effect_dict')
         if effect_dict:
             for key in sorted(effect_dict, key=effect_dict.get, reverse=True)[:3]:
                 print(key, wine_dict.get(key), 'debug')
