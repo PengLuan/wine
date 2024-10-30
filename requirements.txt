@@ -3,3 +3,8 @@ peewee==3.17.5
 PyMySQL==1.1.0
 flask_cors==4.0.0
 transformers==4.46.0
+torch==2.2.2
+datasets==3.0.2
+LAC==2.1.2
+paddlepaddle==2.5.2
+gensim==4.3.3

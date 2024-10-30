@@ -38,6 +38,8 @@ class ChatLog(BaseModel):
     stage = IntegerField()
     user_content = TextField()
     flat_content = TextField()
+    wine_id = IntegerField()
+    intent = IntegerField()
 
     class Meta:
         database = ReconnectMySQLDatabase.get_db_instance()

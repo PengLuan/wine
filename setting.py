@@ -5,7 +5,7 @@ DB_NAME = "wine"
 DB_HOST = "127.0.0.1"
 DB_PORT = 3306
 DB_USER = "root"
-DB_PASSWORD = "mm123456"
+DB_PASSWORD = "12345678"
 
 
 class StageMap(Enum):
@@ -28,5 +28,9 @@ class ScoreMap(Enum):
 class ChatExample(Enum):
     Hello = "我们这边是一家酒庄，请问您这边有什么问题需要询问的？"
     HelloOnlyWine = "请问您需要对**这款酒的哪个方面进行了解呢？"
-    HelloOnlyIntent = "请问哪款酒**方面的信息呢？"
+    HelloOnlyIntent = "请问您需要知道哪款酒**方面的信息呢？"
     ByeBye = "感谢您的评价，祝您生活愉快！"
+
+
+IntentMap = {0: "价格", 1: "口感", 2: "年份"}
+IntentFiledMap = {0: "price", 1: "desc", 2: "year"}
