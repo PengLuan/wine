@@ -19,11 +19,11 @@ def http_base(func) -> callable:
         x_forwarded_for = request.headers.get('X-Forwarded-For')
         if x_forwarded_for:
             client_ip = x_forwarded_for.split(',')[0]
-        token = request.headers.get('token')
         t1 = time.time()
         result = {}
         try:
             params = request.form if request.method == 'POST' else request.args
+            token = params.get('session_id')
             data = func(token, params)
         except CustomException as e:
             result = {'data': None, 'msg': e.msg, 'code': e.code}

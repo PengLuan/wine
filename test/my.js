@@ -7,7 +7,36 @@ $(function(){
 			$("#container").append("<div class='for-human'>" + text + "</div>")
 			$.post(BaseUrl, {"text": text, "session_id": UUID}, function(res){
 				if(res.code == 0){
-					$("#container").append("<div class='for-robot'>" + res.data.text + "</div>");
+					$("#container").append("<div class='for-robot'>" + res.data.flat_content + "</div>");
+					if (res.data.wine_id > 0){
+                        $("#can_do_score").show();
+                        $("#wine_name").text(res.data.wine_name);
+					}
+				}
+				console.log(res);
+			});
+		}else{
+			alert("请输入聊天内容")
+		}
+	});
+	$("#no_score").click(function(){
+        $("#can_do_score").hidden();
+	});
+	$("#yes_score").click(function(){
+        $("#can_do_score").hidden();
+        $("#score").show();
+	})
+	$("#send").click(function(){
+		let text = $("#text").val();
+		if(text){
+			$("#container").append("<div class='for-human'>" + text + "</div>")
+			$.post(BaseUrl, {"text": text, "session_id": UUID}, function(res){
+				if(res.code == 0){
+					$("#container").append("<div class='for-robot'>" + res.data.flat_content + "</div>");
+					if (res.data.wine_id > 0){
+                        $("#can_do_score").show();
+                        $("#wine_name").text(res.data.wine_name);
+					}
 				}
 				console.log(res);
 			});
