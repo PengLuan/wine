@@ -24,4 +24,7 @@ def save_chat(token: str, user_content: str, flat_content: str, stage: int, wine
     if intent is not None:
         chat_obj.intent = intent
     chat_obj.save()
-    return {'flat_content': flat_content, 'wine_id': wine.id, "wine_name": wine.name}
+    if isinstance(wine, Wine) and intent is not None and intent > 0:
+        return {'flat_content': flat_content, 'wine_id': wine.id, "wine_name": wine.name}
+    else:
+        return {'flat_content': flat_content, 'wine_id': -1, "wine_name": ''}

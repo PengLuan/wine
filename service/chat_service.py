@@ -26,11 +26,12 @@ def handler_chat(token: str, request_dict: Dict[str, str]):
                 last_chat = None  # 如果 bye bye 就重新开启一段信息
         intent, wine = find_wine_name_and_intent(text)
         print(intent, wine, 'intent_and_wine')
-        if last_chat is not None and intent < 0 < last_chat.intent:
+        if last_chat is not None and last_chat.intent is not None and intent < 0 < last_chat.intent:
             intent = last_chat.intent
-        if isinstance(wine, list) and len(wine) == 0:
-            wine = Wine.get_or_none(last_chat.wine_id)
-        if intent > 0:
+        if last_chat is not None and last_chat.wine_id and isinstance(wine, list):
+            # 保持上下文的关联性
+            wine = Wine.get_or_none(Wine.id == last_chat.wine_id)
+        if intent >= 0:
             # 直接回答问题
             if isinstance(wine, Wine):
                 res_text = f"您所咨询的{wine.name}的{IntentMap.get(intent)}为{getattr(wine, IntentFiledMap.get(intent))}"
